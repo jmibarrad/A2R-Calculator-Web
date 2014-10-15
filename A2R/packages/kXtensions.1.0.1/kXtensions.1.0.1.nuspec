@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>kXtensions</id>
+    <version>1.0.1</version>
+    <title>kXtensions</title>
+    <authors>Camilo Aguilar</authors>
+    <owners>Camilo Aguilar</owners>
+    <projectUrl>https://github.com/kmiloaguilar/kXtensions</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Extensions for C# object types</description>
+    <releaseNotes>v.1.0.1
+Edited title on meta-data
+
+
+v1.0.0
+String extensions:
+- IsEmailAddress
+- IsNumber
+
+Integer extensions
+- IsBetween
+- IsEven</releaseNotes>
+    <language>en-US</language>
+    <tags>c# extensions</tags>
+  </metadata>
+</package>

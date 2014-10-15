@@ -1,0 +1,33 @@
+﻿@model A2R.Models.ConverterModel
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+</head>
+    <body>
+        <h1 style="color:blueviolet">Roman to Arabic</h1>
+
+        <div>
+            @{
+                Html.BeginForm("R2A", "Home");
+            }
+            @Html.Label("Roman Number: [I-MMMCMXCIX]")
+            @Html.TextBoxFor(x => x.input)
+            <button type="submit">Convert</button>
+
+            @{
+                Html.EndForm();
+            }
+
+            @Html.Label("Answer:")
+            @Html.ValueFor(x => x.answer)
+        </div>
+    </body>
+</html>

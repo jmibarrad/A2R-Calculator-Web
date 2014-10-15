@@ -1,0 +1,32 @@
+﻿@model A2R.Models.CalculatorModel 
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+</head>
+    <body>
+        <h1 style="color:chocolate">Calculator</h1>
+
+        <div>
+            @{
+                Html.BeginForm("Add", "Home");
+            }
+            @Html.Label("Two Romans numbers: [Range: 1-3999]")
+            @Html.TextBoxFor(x => x.romanNumber) 
+            <button type="submit">Calculate</button>
+
+            @{
+                Html.EndForm();
+            }
+
+            @Html.Label("Asnwer:")
+            @Html.ValueFor(x => x.answer)
+        </div>
+    </body>
+</html>
