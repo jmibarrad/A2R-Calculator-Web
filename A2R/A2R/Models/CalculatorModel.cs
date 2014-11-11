@@ -7,8 +7,9 @@ namespace A2R.Models
 {
     public class CalculatorModel
     {
-        public string romanNumber { get; set; }
-        public string romanNumber2 { get; set; }
+        public string expresion { get; set; }
         public string answer { get; set; }
+        public List<OperationsModel> Operaciones { get; set; }
+
     }
 }

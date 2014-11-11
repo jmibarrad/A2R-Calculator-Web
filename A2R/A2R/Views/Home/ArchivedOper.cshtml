@@ -1,0 +1,33 @@
+﻿@model A2R.Models.CalculatorModel
+
+@{
+    ViewBag.Title = "Archived Operations";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 style="color:slateblue">Archived Operations</h2>
+<div class="row">
+    <table class="table table-bordered ">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Num1</th>
+                <th>Operator</th>
+                <th>Num2</th>
+                <th>Answer</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var operacion in Model.Operaciones)
+            {
+                <tr>
+                    <td>@operacion.id</td>
+                    <td>@operacion.input</td>
+                    <td>@operacion.op</td>
+                    <td>@operacion.input2</td>
+                    <td>@operacion.output</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,38 @@
+﻿@model A2R.Models.OperationsModel
+
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 style="color:slateblue">Detail by Guid</h2>
+<div class="container">
+
+    @{
+        Html.BeginForm("Detail", "Home");
+    }
+    <div class="row">
+        @Html.LabelFor(x => x.id):
+        @Html.ValueFor(x => x.id)
+    </div>
+    <div class="row">
+        @Html.LabelFor(x => x.input):
+        @Html.ValueFor(x => x.input)
+    </div>
+    <div class="row">
+        @Html.LabelFor(x => x.op):
+        @Html.ValueFor(x => x.op)
+    </div>
+    <div class="row">
+        @Html.LabelFor(x => x.input2):
+        @Html.ValueFor(x => x.input2)
+    </div>
+    <div class="row">
+        @Html.LabelFor(x => x.output):
+        @Html.ValueFor(x => x.output)
+    </div>
+
+    @{
+        Html.EndForm();
+    }
+</div>

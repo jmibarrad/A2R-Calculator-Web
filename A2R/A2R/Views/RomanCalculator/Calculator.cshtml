@@ -1,0 +1,44 @@
+﻿@model A2R.Controllers.CalculatorClass
+
+@{
+    ViewBag.Title = "Roman Calculator";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 style="color: turquoise">NEW Roman Calculator</h2>
+
+@using (@Html.BeginForm("Calculator","RomanCalculator")){
+    @Html.LabelFor(x=>x.input,new {@class="form-control"}) 
+    @Html.TextBoxFor(x=>x.input)
+    <button class="btn btn-primary" type="submit">Calculate</button>
+
+
+}
+<div class="row">
+    <p style="font-family: Calibri; color:steelblue">
+        @Html.LabelFor(x => x.output)
+        @Html.ValueFor(x => x.output)
+    </p>
+</div>
+
+<div class="row">
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>    
+                <th>Input</th>
+                <th>Output</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var op in Model.OperList)
+            {
+                <tr>
+                    <td>@op.id</td>
+                    <td>@op.input</td>
+                    <td>@op.output</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

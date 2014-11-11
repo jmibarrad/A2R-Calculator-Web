@@ -1,0 +1,28 @@
+﻿@model A2R.Models.OperationsModel
+
+@{
+    ViewBag.Title = "Edit Expression";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 style="color:rosybrown">Edit Expression</h2>
+<div>
+@{
+    Html.BeginForm("Editable", "Home");
+}
+@Html.Label("Ingrese dos numeros romanos entre 1 y 1000:")
+@Html.TextBoxFor(x => x.input)
+@Html.DropDownListFor(x => x.op, new SelectList(
+        new List<object>
+        {
+            new {value=0,text="-"},
+            new {value=1,text="+"}
+        }, "value", "text", 2))
+@Html.TextBoxFor(x => x.input2)
+    <p>
+        <button type="submit">Calculate</button>
+    </p>
+@{
+    Html.EndForm();
+}
+</div>

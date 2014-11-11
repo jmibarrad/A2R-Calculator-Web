@@ -52,6 +52,7 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
@@ -163,7 +164,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\LogicGoesHere.cs" />
+    <Compile Include="Controllers\RomanCalculatorController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -171,6 +172,7 @@
     <Compile Include="Models\CalculatorModel.cs" />
     <Compile Include="Models\ConverterModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\OperationsModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -225,6 +227,10 @@
     <Content Include="Views\Home\Add.cshtml" />
     <Content Include="Views\Home\R2A.cshtml" />
     <Content Include="Views\Home\A2R.cshtml" />
+    <Content Include="Views\RomanCalculator\Calculator.cshtml" />
+    <Content Include="Views\Home\Editable.cshtml" />
+    <Content Include="Views\Home\ArchivedOper.cshtml" />
+    <Content Include="Views\Home\Detail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

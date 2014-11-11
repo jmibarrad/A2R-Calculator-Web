@@ -12,11 +12,95 @@ namespace A2R.Controllers
 {
     public class HomeController : Controller
     {
+        public enum A2R_Values
+        {
+            I = 1,
+            V = 5,
+            X = 10,
+            L = 50,
+            C = 100,
+            D = 500,
+            M = 1000
+        }
+
         public ActionResult Index()
         {
             ViewBag.Message = "Your contact page.";
 
             return View();
+        }
+
+        public ActionResult Editable(Guid id)
+        {
+            var operations = (List<OperationsModel>)Session["oper"];
+            var operation = operations.First(x => x.id == id);
+            return View(operation);
+        }
+
+        [HttpPost]
+        public ActionResult Editable(OperationsModel model)
+        {
+            model.op = model.op == "0" ? "-" : "+";
+
+            var ec = model.input + model.op + model.input2;
+            var calculadora = new CalculatorModel()
+            {
+                expresion = ec
+            };
+            model.output = calculadora.answer;
+
+            var operations = (List<OperationsModel>)Session["operaciones"];
+            for (var i = 0; i < operations.Count; i++)
+            {
+                if (operations[i].id == model.id)
+                    operations[i] = model;
+            }
+
+            Session["operaciones"] = operations;
+            return View(model);
+
+        }
+
+        public ActionResult ArchivedOper()
+        {
+            if (Session["archivo"] == null)
+                Session["archivo"] = new List<OperationsModel>();
+
+            var calculator = new CalculatorModel
+            {
+                Operaciones = (List<OperationsModel>)Session["archivo"]
+            };
+
+            return View(calculator);
+
+        }
+
+        public ActionResult Detail(Guid id)
+        {
+            var operations = (List<OperationsModel>)Session["oper"];
+            var operation = operations.First(x => x.id == id);
+            return View(operation);
+        }
+
+        [HttpPost]
+        public ActionResult ArchivedOper(OperationsModel op)
+        {
+            var operations = (List<OperationsModel>)Session["oper"];
+            var operation = operations.First(x => x.id == op.id);
+            operations.Remove(operation);
+            Session["oper"] = operations;
+
+            if (Session["archived"] == null)
+                Session["archived"] = new List<OperationsModel>();
+
+            var calculator = new CalculatorModel
+            {
+                Operaciones = (List<OperationsModel>)Session["archived"]
+            };
+            calculator.Operaciones.Add(operation);
+            Session["archived"] = calculator.Operaciones;
+
+            return View(calculator);
         }
 
         public ActionResult Add()
@@ -27,9 +111,9 @@ namespace A2R.Controllers
         [HttpPost]
         public ActionResult Add(CalculatorModel model)
         {
-            if (validateSum(model.romanNumber))
+            if (validateSum(model.expresion))
             {
-                model.romanNumber= Sum().ToString();
+                model.expresion= Sum().ToString();
                 model.answer= Convert_A2R(Sum().ToString());
             }
             return View(model);
